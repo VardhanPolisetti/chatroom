@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LogIn</title>
+    <style>
+      body {
+        height: 100vh;
+        /* background-color: rgb(125, 190, 255); */
+        background: linear-gradient(
+          45deg,
+          rgb(102, 102, 156) 0%,
+          rgb(9, 51, 63) 50%,
+          rgb(95, 68, 122) 100%
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        height: 400px;
+        width: 600px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 13px;
+        box-shadow: 0px 0px 10px 1px black;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .formwrap {
+        padding: 20px;
+        background-color: white;
+        border-radius: 13px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      form {
+        height: 200px;
+        width: 250px;
+        margin-top: 20px;
+        font-family: calibri;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      h2,
+      h5 {
+        margin: 0px;
+        margin-top: 10px;
+        font-family: arial;
+      }
+      h2 {
+        font-size: 30px;
+      }
+      input {
+        padding: 10px;
+        background: none;
+        border: none;
+        border-bottom: 2px solid rgb(169, 169, 169);
+      }
+      input:focus {
+        border-bottom: none;
+        outline: 2px solid rgb(83, 83, 255);
+        box-shadow: 0px 0px 5px 1px rgba(139, 50, 255, 0.932);
+        border-radius: 3px;
+      }
+      input::placeholder {
+        color: rgb(164, 164, 164);
+      }
+      img {
+        margin-left: -20px;
+      }
+      button {
+        border: none;
+        background-color: rgb(255, 128, 0);
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      button:active {
+        box-shadow: 0px 0px 5px 2px rgba(168, 168, 168, 0.932);
+      }
+      span {
+        text-align: center;
+        color: rgb(109, 109, 109);
+      }
+      #errmsg {
+        color: red;
+        font-family: calibri;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <img
+          src="https://img.freepik.com/free-vector/dialog-chat-flat-icon_11099-7.jpg?size=338&ext=jpg"
+        />
+      </div>
+      <div class="formwrap">
+        <h2>ChatRoom</h2>
+        <h5>LogIn</h5>
+        <% if (errstate) { %>
+        <span id="errmsg"><%= errMessage %></span>
+        <% } %>
+        <form method="POST" action="/loginSubmit">
+          <input type="email" name="email" placeholder="Enter email" />
+
+          <input type="password" name="psw" placeholder="Enter password" />
+
+          <button type="submit">LogIn</button>
+          <span>Don't have an account? <a href="register">Register</a></span>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

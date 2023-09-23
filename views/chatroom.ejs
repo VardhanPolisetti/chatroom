@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatRoom</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@400;700&family=Salsa&display=swap");
+      body {
+        height: 100vh;
+        /* background-color: rgb(28, 84, 90); */
+        background-image: linear-gradient(
+          45deg,
+          rgb(102, 102, 156) 0%,
+          rgb(9, 51, 63) 50%,
+          rgb(95, 68, 122) 100%
+        );
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-family: "Roboto";
+      }
+      .container {
+        width: 75%;
+        height: 90%;
+        overflow: hidden;
+        border-radius: 20px;
+        background-color: white;
+        display: flex;
+      }
+      #user-list {
+        flex: 1;
+        color: white;
+        background-color: rgb(18, 53, 57);
+        height: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .header {
+        background-color: rgb(3, 39, 36);
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      h2 {
+        margin: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      #roommem {
+        color: gray;
+        margin: 20px 0px 0px 20px;
+      }
+      #users {
+        height: 100%;
+        overflow-y: auto;
+        padding: 20px;
+      }
+      #members {
+        display: flex;
+        align-items: center;
+        margin: 0px;
+        background-color: #69aab34a;
+        height: 56px;
+        border-radius: 10px;
+        margin-bottom: 9px;
+      }
+      #usersdp {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        margin: 4px 10px 0px 10px;
+        object-fit: cover;
+      }
+      #rightbar {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+      }
+      .roomInfo {
+        color: white;
+        padding: 12px;
+        background-color: rgb(23, 52, 75);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      h3 {
+        margin: 10px;
+        font-family: Salsa;
+        color: #b2b2b2;
+      }
+      #rc {
+        color: #b2b2b2;
+      }
+      #usInfo {
+        margin-right: 8px;
+        display: flex;
+        align-items: center;
+      }
+      #usdp {
+        height: 43px;
+        width: 43px;
+        object-fit: cover;
+        margin-left: 7px;
+        border-radius: 50%;
+      }
+      #exitChat {
+        background-color: rgba(255, 255, 255, 0.416);
+        height: 30px;
+        width: 60px;
+        border: none;
+        border-radius: 30px;
+      }
+      #exitChat:hover {
+        background-color: rgba(255, 255, 255, 0.249);
+        color: white;
+        cursor: pointer;
+      }
+      #chat {
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        background-image: url("https://i.pinimg.com/originals/13/5f/d4/135fd416d9736290f46abf22bd2bfe35.png");
+        /* background-color: #fff7e9; */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      #upUser {
+        text-align: center;
+        font-family: sans-serif;
+        font-style: italic;
+        font-size: 14px;
+        color: gray;
+      }
+      #messages {
+        padding: 10px;
+        background-color: #e7e5d99e;
+        overflow-y: auto;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      #form {
+        height: 50px;
+        background-color: #b0b0b0b8;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+      }
+      #input {
+        height: 40px;
+        width: 85%;
+        border: 1px solid gray;
+        border-radius: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-family: sans-serif;
+        font-size: 15px;
+      }
+      #input:focus {
+        outline: none;
+      }
+      #sendBut {
+        background-color: transparent;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #sendimg {
+        background-color: white;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+      }
+      #sendimg:hover {
+        box-shadow: 0px 0px 5px 1px gray;
+      }
+      .sender {
+        align-self: flex-end; /* Align sender messages to the right */
+        background-color: #14bc6d;
+        color: white;
+        padding: 8px;
+        border-radius: 10px 0px 10px 10px;
+        margin: 5px;
+        max-width: 60%;
+        word-wrap: break-word;
+        display: flex;
+        flex-direction: column;
+      }
+      .receiver {
+        align-self: flex-start; /* Align receiver messages to the left */
+        background-color: #228ce3;
+        color: white;
+        padding: 8px;
+        border-radius: 0px 10px 10px 10px;
+        margin: 5px;
+        max-width: 60%;
+        word-wrap: break-word;
+        display: flex;
+        flex-direction: column;
+      }
+      #msgSender {
+        font-size: 12px;
+        color: #282525;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="user-list">
+        <div class="header">
+          <h2>ChatRoom</h2>
+          <button id="exitChat">Exit</button>
+        </div>
+
+        <span id="roommem">Room Members</span>
+        <div id="users"></div>
+      </div>
+      <div id="rightbar">
+        <div class="roomInfo">
+          <h3>Room Code: <span id="rc"></span></h3>
+          <span id="usInfo">
+            <span id="usname"></span>
+            <img id="usdp" />
+          </span>
+        </div>
+
+        <div id="chat">
+          <div id="messages"></div>
+
+          <form id="form" action="">
+            <input
+              id="input"
+              autocomplete="off"
+              placeholder="Type your message"
+            />
+            <button id="sendBut">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/chatmate-77760.appspot.com/o/send.png?alt=media&token=b997807e-25ba-42e5-9fb6-f79d07a3e131"
+                id="sendimg"
+              />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const urlParams = new URLSearchParams(window.location.search);
+      const roomCode = urlParams.get("room");
+      const userName = urlParams.get("username");
+
+      const user = sessionStorage.getItem("CurrentUserInfo");
+      const currentUser = JSON.parse(user).username;
+      const userImgUrl = JSON.parse(user).userimageurl;
+
+      document.getElementById("usname").textContent = currentUser;
+      document.getElementById("usdp").src = userImgUrl;
+
+      document.getElementById("rc").textContent = roomCode;
+
+      document.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const input = document.getElementById("input");
+        if (input.value.trim() != "") {
+          socket.emit("sendMessage", {
+            message: input.value,
+            roomCode: roomCode,
+            name: userName,
+          });
+          input.value = "";
+        }
+      });
+
+      let rc = document.getElementById("rc").textContent;
+      socket.on("receivedMessage", (msg) => {
+        console.log(msg);
+        if (msg.roomCode === rc) {
+          document.getElementById("messages").innerHTML += `
+            <p class="${msg.sender === socket.id ? "sender" : "receiver"}">
+              <span id="msgSender">${
+                msg.sender === socket.id ? "You" : msg.senderName
+              }</span>
+              ${msg.message}
+            </p>
+          `;
+
+          const messagesContainer = document.getElementById("messages");
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+      });
+
+      socket.on("updateUser", (user, roomCode) => {
+        if (roomCode === rc) {
+          document.getElementById("messages").innerHTML += `
+            <p id="upUser">${user} joined into room</p>`;
+        }
+      });
+
+      document.getElementById("exitChat").addEventListener("click", () => {
+        sessionStorage.removeItem("RoomCode");
+        window.history.back();
+        socket.emit("exitRoom", userName, roomCode, userImgUrl);
+      });
+
+      socket.emit("userJoined", currentUser, roomCode, userImgUrl);
+
+      socket.on("userList", (users, imgurl, romcod) => {
+        const userList = document.getElementById("users");
+        console.log(romcod + ", " + rc);
+        if (romcod === rc) {
+          userList.innerHTML = "";
+
+          users.map((user, index) => {
+            const dp = imgurl[index];
+
+            userList.innerHTML += `
+          <p id="members"><span><img src=${dp} id="usersdp"></span>${user}</p>
+          `;
+          });
+        }
+      });
+
+      socket.on("exitUser", (user, roomCode) => {
+        if (roomCode === rc) {
+          document.getElementById("messages").innerHTML += `
+            <p id="upUser">${user} left from room</p>`;
+        }
+      });
+    </script>
+  </body>
+</html>

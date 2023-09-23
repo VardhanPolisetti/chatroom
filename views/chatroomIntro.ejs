@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatRoom Intro</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@400;700&family=Salsa&display=swap');
+        body{
+            background-color: rgb(28, 84, 90);
+            margin: 0px;
+        }
+        .top{
+            background-image: url('https://www.technocrazed.com/wp-content/uploads/2015/12/city-wallpaper-44.jpg');
+            background-size: cover;
+        }
+        .header{
+            background-color: rgba(0, 0, 0, 0.58);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .head{
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #logo{
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 35px;
+            color: white;
+        }
+        #bt{
+            height: 40px;
+            width: 100px;
+            color: white;
+            font-weight: bold;
+            background-color: transparent;
+            border: 2px solid white;
+            border-radius: 50px;
+            margin-right: 10px;
+        }
+        #bt:hover{
+            background-color: rgb(20, 46, 49);
+            cursor: pointer;
+        }
+        .bdy{
+            background-color: rgba(0, 0, 0, 0.58);
+            display: flex;
+            justify-content: center;
+        }
+        .intro{
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        #quo{
+            color: white;
+            font-weight: bold;
+            font-family: Salsa;
+            font-size: 95px;
+        }
+        .info{
+            width: 400px;
+            height: 120px;
+            overflow: clip;
+            font-family: Salsa;
+            color: white;
+            position: relative;
+            left: 20px;
+            top: 45px;
+        }
+        .feat{
+            background-color: rgb(18, 53, 57);
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg,#ff131300 33%,rgba(255, 255, 255, 0.11) 50%,#0000 66%)rgb(18, 53, 57);
+            background-size:350% 100%;
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% {
+                background-position: right;    
+            }
+        }
+        .images{
+            width: 60%;
+            height: 500px;
+            border-radius: 20px;
+            border: 1px solid gray;
+            overflow: hidden;
+        }
+        .bts{
+            display: flex;
+        }
+        #prbt{
+            height: 70px;
+            width: 45px;
+            margin-right: 20px;
+            background-color: rgba(255, 255, 255, 0.384);
+            border-radius: 8px;
+            font-family: Roboto;
+            border: none;
+            color: rgb(202, 202, 202);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+        }
+        #nxbt{
+            height: 70px;
+            width: 45px;
+            margin-left: 20px;
+            background-color: rgba(255, 255, 255, 0.384);
+            border-radius: 8px;
+            border: none;
+            color: rgb(202, 202, 202);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+        }
+        #prbt:hover,#nxbt:hover{
+            cursor: pointer;
+            background-color: rgba(240, 248, 255, 0.187);
+        }
+        .slider-container {
+            position: relative;
+            max-height: 100%;
+            overflow: hidden;
+        }
+        .slider {
+            height: 500px;
+            display: flex;
+        }
+        .slider img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .btn {
+            cursor: pointer;
+        }
+        .dots {
+            width: inherit;
+            text-align: center;
+            margin-top: 10px;
+            position: absolute;
+        }
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: rgba(137, 137, 137, 0.306);
+        }
+
+        .dot.active {
+            background-color: white;
+        }
+        footer{
+            height: 200px;
+            color: white;
+            background-color: rgb(3, 39, 36);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .links{
+            margin-bottom: 20px;
+            display: flex;
+        }
+        footer img{
+            margin-left: 20px;
+            height: 25px;
+            width: 25px;
+            cursor: pointer;
+        }
+        .qury{
+            font-family: calibri;
+            color:gray;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        #conInfo{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        a{
+            margin-top: 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: gray;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="header">
+            <div class="head">
+                <h1 id="logo">Chat Room</h1>
+                <div class="bts">
+                    <form action="/login">
+                        <button id="bt">Login</button>
+                    </form>
+                    <form action="/register">
+                        <button id="bt">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bdy">
+            <div class="intro">
+                <div class="quote">
+                    <h1 id="quo">Make a<br> <span style="color:orange">Connection</span></h1>
+                </div>
+                <div class="info">
+                    <p>* Gather your friends and create a room for chat where you can share laughter, stories, and memorable moments. Building a chat room is a wonderful way to stay connected and nurture your friendships.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="feat">
+        <div class="prevbt">
+            <button id="prbt">&#10096</button>
+        </div>
+        <div class="images">
+            <div class="slider-container">
+                <div class="slider">
+                    <img src="https://i.ibb.co/xYCtw94/chatroom-SH1.jpg" title="You can Chat together">
+                    <img src="https://i.ibb.co/Ws8nJkd/Presentation2.png" title="Individual Accouts">
+                    <img src="https://i.ibb.co/Y7CMSy3/SH4.png" title="Dashboard" >
+                    <img src="https://i.ibb.co/30Mcwnb/Presentation1.png" title="Create a room or Join a room">
+                </div>
+            </div>
+
+            <div class="dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+        <div class="nextbt">
+            <button id="nxbt">&#10097</button>
+        </div>
+    </div>
+    <footer>
+        <div class="links">
+            <a href="https://www.youtube.com/@vardhanpolisetti9498" target="_blank"><img src="https://i.ibb.co/8jgfL9h/youtube-1.png"></a>
+            <a href="https://www.instagram.com/mr_vardhan_polisetti/" target="_blank"><img src="https://i.ibb.co/VV4hLMp/instagram.png"></a>
+            <a href="https://twitter.com/Vardhan3001" target="_blank"><img src="https://i.ibb.co/RbfvDgB/twitter.png"></a>
+            <a href="https://www.linkedin.com/in/leela-krishna-sri-vardhan-polisetti-2b8731267" target="_blank"><img src="https://i.ibb.co/fQGMjh7/linkedin.png"></a>
+        </div>
+        <div class="qury">
+            <span>For Any Queries</span> 
+            <span id="conInfo"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=chatroomhelp@gmail.com" target="_blank"><img src="https://i.ibb.co/PN2cH6b/mail.png"><span style="margin-left: 10px;">chatroomhelp@gmail.com</span></a></span>
+        </div>
+    </footer>
+     <script>
+        // JavaScript for image slider
+        const images = document.querySelectorAll('.slider img');
+        const prevBtn = document.getElementById('prbt');
+        const nextBtn = document.getElementById('nxbt');
+        const dots = document.querySelectorAll('.dot');
+        let currentImageIndex = 0;
+
+        // Function to show the current image and hide others
+        function showImage(index) {
+            for (let i = 0; i < images.length; i++) {
+                if (i === index) {
+                    images[i].style.display = 'block';
+                } else {
+                    images[i].style.display = 'none';
+                }
+            }
+        }
+
+        // Function to update the active dot
+        function updateDots(index) {
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Event listener for the "Next" button
+        nextBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+            updateDots(currentImageIndex);
+        });
+
+        // Event listener for the "Previous" button
+        prevBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage(currentImageIndex);
+            updateDots(currentImageIndex);
+        });
+
+        // Initially show the first image and set the first dot as active
+        showImage(currentImageIndex);
+        updateDots(currentImageIndex);
+    </script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatroom Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@400;700&family=Salsa&display=swap');
+        body{
+            background-color: rgb(28, 84, 90);
+            margin: 0px;
+            position: relative;
+        }
+        .top{
+            background-image: url('https://preview.redd.it/v266p7bliko71.jpg?width=1920&format=pjpg&auto=webp&s=ae4f5c1938f43af6459a8d64d866c5e2e3d87de6');
+            background-size: cover;
+            height: 55%;
+        }
+        .header{
+            background-color: #0000007a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .head{
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #logo{
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 35px;
+            color: white;
+        }
+        #logoutMenu{
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .profile{
+            display: flex;
+            justify-content: center;
+        }
+        #profile{
+            font-family: Roboto Condensed;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        #userImg{
+            height: 50px;
+            width: 50px;
+            margin-left: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .bdy{
+            height: 80%;
+            background-color: #0000007a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .bts{
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #createRoomButton, #joinRoomButton{
+            height: 45px;
+            width: 250px;
+            color: white;
+            font-weight: bold;
+            background-image: linear-gradient(to right, #3a2fff 0%, #19b4f0 51%, #2f9dff 100%);
+            border: 2px solid white;
+            border-radius: 50px;
+            margin-right: 10px;
+            transition: 0.5s;
+            background-size: 200% auto;
+        }
+        #createRoomButton:hover, #joinRoomButton:hover{
+            cursor: pointer;
+            background-position: right center;
+            color: #fff;
+            text-decoration: none;
+        }         
+        form{
+            margin: 0px;
+            width: 520px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .info{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .info p{
+            margin: 10px;
+            width: 700px;
+            color: rgb(160, 160, 160);
+            font-family: Salsa;
+            font-size: 15px;
+        }
+        .feat{
+            /* background-color: rgb(18, 53, 57); */
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg,#ff131300 33%,rgba(255, 255, 255, 0.11) 50%,#0000 66%)rgb(18, 53, 57);
+            background-size:350% 100%;
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% {
+                background-position: right;    
+            }
+        }
+        .images{
+            width: 60%;
+            height: 500px;
+            border-radius: 20px;
+            border: 1px solid gray;
+            overflow: hidden;
+        }
+        #prbt{
+            height: 70px;
+            width: 45px;
+            margin-right: 20px;
+            background-color: rgba(255, 255, 255, 0.384);
+            border-radius: 8px;
+            font-family: Roboto;
+            border: none;
+            color: rgb(202, 202, 202);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+        }
+        #nxbt{
+            height: 70px;
+            width: 45px;
+            margin-left: 20px;
+            background-color: rgba(255, 255, 255, 0.384);
+            border-radius: 8px;
+            border: none;
+            color: rgb(202, 202, 202);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+        }
+        #prbt:hover,#nxbt:hover{
+            cursor: pointer;
+            background-color: rgba(240, 248, 255, 0.187);
+        }
+        .slider-container {
+            max-height: 100%;
+            overflow: hidden;
+        }
+        .slider {
+            height: 500px;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slider img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .btn {
+            cursor: pointer;
+        }
+        .dots {
+            width: inherit;
+            text-align: center;
+            margin-top: 10px;
+            position: absolute;
+        }
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: rgba(137, 137, 137, 0.306);
+        }
+        .dot.active {
+            background-color: white;
+        }
+        .links{
+            margin-bottom: 20px;
+            display: flex;
+        }
+        footer{
+            height: 200px;
+            color: white;
+            background-color: rgb(3, 39, 36);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        footer img{
+            margin-left: 20px;
+            height: 25px;
+            width: 25px;
+            cursor: pointer;
+        }
+        .qury{
+            font-family: calibri;
+            color:gray;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        #conInfo{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .popup1, .popup2{
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        .popupchild{
+            height: 100vh;
+        }
+        .roomForm{
+            width: 450px;
+            height: 190px;
+            font-family: Roboto;
+            background-color: white;
+            border-radius: 30px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .roomForm h2{
+            margin-top: -20px;
+            margin-bottom: 30px;
+        }
+        .roomForm input{
+            height: 30px;
+            width: 250px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 1px 1px 5px gray;
+            padding: 15px;
+        }
+
+        .roomForm input:focus{
+            outline: 2px solid blue;
+        }
+
+        .roomForm span{
+            width: 300px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .roomForm button{
+            height: 35px;
+            width: 100px;
+            font-weight: bold;
+            color: white;
+            border-radius: 20px;
+            border: 1px solid gray;
+            box-shadow: 1px 1px 5px gray;
+            cursor: pointer;
+        }
+        .roomForm #cancel1, #cancel2{
+            background-color: #F09819;
+        }
+        .roomForm #createRoomSubmit,#joinRoomSubmit{
+            background-color: green;
+        }
+        a{
+            margin-top: 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: gray;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="header">
+            <div class="head">
+                <h1 id="logo">Chat Room</h1>
+                <div>
+                    <span id="profile">
+                        <span id="user_name"><%=data.name %></span> 
+                        <img id="userImg" src=<%= data.imageurl %>>
+                        <span><img src="https://cdn-icons-png.flaticon.com/128/8212/8212701.png" id="logoutMenu" title="LogOut"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="bdy">
+
+            <div class="bts">
+                <form>
+                    <button type="button" id="createRoomButton">Create Room</button>
+                    <button type="button" id="joinRoomButton">Join Room</button>
+                </form>
+            </div>
+        
+            <div class="popup1">
+                <div class="popupchild">
+                    <div class="roomForm" id="createRoomForm">
+                        <h2>Create Room</h2>
+                        <input type="text" id="createRoomInput" placeholder="Enter Room Code">
+                        <span>
+                            <button type="button" id="cancel1">Cancel</button>
+                            <button type="button" id="createRoomSubmit">Create</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="popup2">
+                <div class="popupchild">
+                    <div class="roomForm" id="joinRoomForm">
+                        <h2>Join Room</h2>
+                        <input type="text" id="joinRoomInput" placeholder="Enter Room Code" name="room">
+                        <span>
+                            <button type="button" id="cancel2">Cancel</button>
+                            <button type="button" id="joinRoomSubmit">Join</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="info">
+                <p style="font-size: 12px;"><b>NOTE</b>: After Creat or Join to room you can connect with all the room members, You can send message and receive If you are refresh the page you loose all previous chat,If all the room members are left from room then room automatically deleted, and remember everything in chatroom is recorded.</p>
+            </div>
+        </div>
+    </div>
+    <div class="feat">
+        <div class="prevbt">
+            <button id="prbt">&#10096</button>
+        </div>
+        <div class="images">
+            <div class="slider-container">
+                <div class="slider">
+                    <img src="https://i.ibb.co/xYCtw94/chatroom-SH1.jpg" title="You can Chat together">
+                    <img src="https://i.ibb.co/Ws8nJkd/Presentation2.png" title="Individual Accouts">
+                    <img src="https://i.ibb.co/Y7CMSy3/SH4.png" title="Dashboard" >
+                    <img src="https://i.ibb.co/30Mcwnb/Presentation1.png" title="Create a room or Join a room">
+                </div>
+            </div>
+
+            <div class="dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+        <div class="nextbt">
+            <button id="nxbt">&#10097</button>
+        </div>
+    </div>
+    <footer>
+        <div class="links">
+            <a href="https://www.youtube.com/@vardhanpolisetti9498" target="_blank"><img src="https://i.ibb.co/8jgfL9h/youtube-1.png"></a>
+            <a href="https://www.instagram.com/mr_vardhan_polisetti/" target="_blank"><img src="https://i.ibb.co/VV4hLMp/instagram.png"></a>
+            <a href="https://twitter.com/Vardhan3001" target="_blank"><img src="https://i.ibb.co/RbfvDgB/twitter.png"></a>
+            <a href="https://www.linkedin.com/in/leela-krishna-sri-vardhan-polisetti-2b8731267" target="_blank"><img src="https://i.ibb.co/fQGMjh7/linkedin.png"></a>
+        </div>
+        <div class="qury">
+            <span>For Any Queries</span> 
+            <span id="conInfo"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=chatroomhelp@gmail.com" target="_blank"><img src="https://i.ibb.co/PN2cH6b/mail.png"><span style="margin-left: 10px;">chatroomhelp@gmail.com</span></a></span>
+        </div>
+    </footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        // JavaScript for image slider
+        const images = document.querySelectorAll(".slider img");
+        const prevBtn = document.getElementById("prbt");
+        const nextBtn = document.getElementById("nxbt");
+        const dots = document.querySelectorAll(".dot");
+        let currentImageIndex = 0;
+
+        // Function to show the current image and hide others
+        function showImage(index) {
+        for (let i = 0; i < images.length; i++) {
+            if (i === index) {
+            images[i].style.display = "block";
+            } else {
+            images[i].style.display = "none";
+            }
+        }
+        }
+
+        // Function to update the active dot
+        function updateDots(index) {
+        dots.forEach((dot, i) => {
+            if (i === index) {
+            dot.classList.add("active");
+            } else {
+            dot.classList.remove("active");
+            }
+        });
+        }
+
+        // Event listener for the "Next" button
+        nextBtn.addEventListener("click", () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+            updateDots(currentImageIndex);
+        });
+
+        // Event listener for the "Previous" button
+        prevBtn.addEventListener("click", () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage(currentImageIndex);
+            updateDots(currentImageIndex);
+        });
+
+        // Initially show the first image and set the first dot as active
+        showImage(currentImageIndex);
+        updateDots(currentImageIndex);
+
+        //Pop Up Box for accepting room code
+        document.getElementById("createRoomButton").addEventListener("click", () => {
+            document.querySelector(".popup1").style.display = "flex";
+        });
+
+        document.getElementById("joinRoomButton").addEventListener("click", () => {
+            document.querySelector(".popup2").style.display = "flex";
+        });
+
+        document.getElementById("cancel1").addEventListener("click", () => {
+            document.querySelector(".popup1").style.display = "none";
+            document.getElementById("createRoomInput").value = '';
+        });
+        document.getElementById("cancel2").addEventListener("click", () => {
+            document.querySelector(".popup2").style.display = "none";
+            document.getElementById("joinRoomInput").value = '';  
+        });
+
+        //Create Button And Join Button Functionality
+        const profileImg = document.getElementById("userImg").src;
+        const name = document.getElementById("user_name").textContent;
+
+        document.getElementById("createRoomSubmit").addEventListener("click", () => {
+            const username = document.getElementById("user_name").textContent;
+            const roomCode = document.getElementById("createRoomInput").value;
+            if (roomCode.trim() !== "") {
+                socket.emit("createRoom", roomCode, username, profileImg);
+            }
+            document.getElementById("createRoomInput").value = '';
+        });
+
+        document.getElementById("joinRoomSubmit").addEventListener("click", () => {
+            const username = document.getElementById("user_name").textContent;
+            const roomCode = document.getElementById("joinRoomInput").value;
+            if (roomCode.trim() !== "") {
+                socket.emit("joinRoom", roomCode, username, profileImg);
+                socket.emit("newUser", username, roomCode);
+            }
+            document.getElementById("joinRoomInput").value = '';
+        });
+
+        socket.on("roomExistsError", (errorMessage) => {
+            alert(errorMessage);
+        });
+
+        socket.on("roomNotFound", () => {
+            alert("Room not found");
+        });
+
+        socket.on("redirectToChatroom", (roomCode, userName) => {
+            window.location.href = `/chatroom?room=${roomCode}&username=${userName}`;
+            sessionStorage.setItem("RoomCode", roomCode);
+        });
+
+        var CurrentUserInfo = new Object();
+        CurrentUserInfo.userimageurl = profileImg;
+        CurrentUserInfo.username = name;
+        sessionStorage.setItem("CurrentUserInfo", JSON.stringify(CurrentUserInfo));
+
+        //logout button menu
+        document.getElementById('logoutMenu').addEventListener('click',()=>{
+            sessionStorage.clear();
+            window.location.href='/';
+        })
+    </script>
+</body>
+</html>
